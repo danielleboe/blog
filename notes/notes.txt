@@ -1,0 +1,24 @@
+MVC
+project-root/
+├── config/
+│   └── config.json
+├── controllers/
+│   ├── api/
+│   └── homeRoutes.js
+├── models/
+│   ├── index.js
+│   └── User.js
+├── public/
+│   ├── css/
+│   └── js/
+├── seeds/
+├── views/
+│   ├── layouts/
+│   └── partials/
+├── .env
+├── .gitignore
+├── server.js
+└── README.md
+
+
+npm install express express-handlebars sequelize pg dotenv bcrypt express-session connect-session-sequelize
