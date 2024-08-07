@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/css/nav.css"  type="text/css" />
+{{!-- <link rel="stylesheet" href="/css/style.css"  type="text/css" /> --}}
+<nav class="navlist nav-desktop" role='navigation'> <!-- Navbar container start -->
+    <!-- Navbar content start -->
+
+    <div class="nav-element logo-div">
+        <a href="/" class="home-link">Home</a>
+    </div>
+
+    <div class="nav-element sement-links">
+        <a href="/dashboard" class="dashboard-link">TRAVEL</a>
+    </div>
+
+    {{#if logged_in}}
+    <div class="nav-element nav-button">
+        <button  class="logout-button">
+            LOG OUT
+        </button>
+    </div>
+ 
+    {{else}}
+    <div class="nav-element nav-button">
+        <button onclick="document.getElementById('login-modal').style.display='block'" class="login-button">
+            LOG IN
+        </button>
+    </div>
+    <!-- sign up button -->
+    <div class="nav-element nav-button">
+        <button onclick="document.getElementById('signup-modal').style.display='block'" style="width: auto"
+            class="signup-button">
+            SIGN UP
+        </button>
+    </div>
+    {{/if}}
+</nav>
+
+{{>login}}
+    <script src="/js/nav.js"></script>
+    <script src="/js/login.js"></script>
