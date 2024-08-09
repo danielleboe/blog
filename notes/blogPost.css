@@ -1,0 +1,19 @@
+body {
+    background-color:black;
+    color:white;
+}
+
+.blog-container {
+display:flex;
+justify-content:center;
+font-family: "Poppins", Helvetica, Arial, sans-serif;
+flex-direction:column;
+margin: 3% 6%;
+}
+
+.user-date{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:flex-start;
+}   
