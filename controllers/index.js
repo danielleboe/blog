@@ -15,6 +15,16 @@ router.get("/dashboard", (req, res) => {
   res.render('dashboard', { title: 'Dashboard' });
 });
 
+router.get("/blog-form", (req, res) => {
+  console.log(`1@@@@@@@@@@blog`);
+  res.render('blogForm', { title: 'Create New Blog Post' });
+});
+
+router.get("/blog-post", (req, res) => {
+  console.log(`1@@@@@@@@@@blog`);
+  res.render('blogPost', { title: 'Blog Post' });
+});
+
 module.exports = router;
 
 

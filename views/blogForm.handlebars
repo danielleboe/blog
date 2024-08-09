@@ -1,0 +1,42 @@
+        <section class="shell"> <!-- Body Shell -->
+            <div class="top-nav"> <!-- Back Button -->
+            </div>
+            <section class="content">
+                <div class="carafe"> <!-- Form Container -->
+
+                    <main class="header"> <!-- Form Header -->
+                        <h1>Enter New Post</h1>
+                    </main>
+                    <form method="post" id="blogForm">
+                        <div class="input-data">
+                            <label for="username" class="formlabel">Username:</label><br>
+                            <input type="text" class="field" id="username" name="Username" autocomplete="username"
+                                placeholder="Username" required>
+                        </div>
+                        <br>
+                        <div class="input-data">
+                            <label for="blogtitle" class="formlabel">Blog Title:</label><br>
+                            <input type="text" class="field" id="blogtitle" name="Title"
+                                placeholder="Blog Post Title..." autocomplete="off" required>
+                        </div>
+                        <br>
+                        <div class="input-data">
+                            <label for="blogcontent" class="formlabel">Blog Content:</label><br>
+                            <textarea name="message" class="field" id="blogcontent" rows="10" autocomplete="off"
+                                placeholder="Enter your content here..."></textarea>
+                        </div>
+                        <div id="msg"></div>
+                        <br>
+                        <div id="'submit-button">
+                            <button class="button" type="submit" value="Submit" id="submit">Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <footer class="footer">
+                    <p>&copy; Danielle Boenisch 2024</p>
+                </footer>
+            </section>
+        </section>
+    <script src="./js/logic.js"></script>
+    <script src="./js/form.js"></script>
