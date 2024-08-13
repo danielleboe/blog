@@ -1,23 +1,26 @@
-<link rel="stylesheet" href="/css/nav.css"  type="text/css" />
-{{!-- <link rel="stylesheet" href="/css/style.css"  type="text/css" /> --}}
+<link rel="stylesheet" href="/css/nav.css" type="text/css" />
+{{!--
+<link rel="stylesheet" href="/css/style.css" type="text/css" /> --}}
 <nav class="navlist nav-desktop" role='navigation'> <!-- Navbar container start -->
     <!-- Navbar content start -->
 
     <div class="nav-element logo-div">
-        <a href="/" class="home-link">Home</a>
+        <a href="/" class="home-link">HOME</a>
     </div>
 
     <div class="nav-element sement-links">
-        <a href="/dashboard" class="dashboard-link">TRAVEL</a>
+        <a href="/dashboard" class="dashboard-link">DASHBOARD</a>
     </div>
 
     {{#if logged_in}}
     <div class="nav-element nav-button">
-        <button  class="logout-button">
-            LOG OUT
-        </button>
+        <form id="logout-form">
+            <button type="submit" class="logout-button">
+                LOG OUT
+            </button>
+        </form>
     </div>
- 
+
     {{else}}
     <div class="nav-element nav-button">
         <button onclick="document.getElementById('login-modal').style.display='block'" class="login-button">
@@ -30,5 +33,7 @@
 </nav>
 
 {{>login}}
-    <script src="/js/nav.js"></script>
-    <script src="/js/login.js"></script>
+<script src="/js/nav.js"></script>
+{{!-- <script src="/js/login.js"></script>
+<script src="/js/signup.js"></script>
+<script src="/js/logout.js"></script> --}}

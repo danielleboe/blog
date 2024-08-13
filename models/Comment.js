@@ -1,6 +1,6 @@
 // 'use strict';
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/config");
+const sequelize = require('../config/connection');
 // const { userInfo } = require("os");
 
 class Comment extends Model {}

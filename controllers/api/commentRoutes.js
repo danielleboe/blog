@@ -1,5 +1,22 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
+const { Comment, Post, User} = require('../../models');
+const withAuth = require('../../utils/auth'); // middleware for authentication
+
+// CREATE a new comment
+router.post('/', withAuth, async (req, res) => {
+  try {
+    const newComment = await Comment.create({
+      comment_text: req.body.comment_text,
+      post_id: req.body.post_id,
+      user_id: req.session.user_id, // assuming session middleware stores user ID
+    });
+
+    res.status(200).json(newComment);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 
 // GET all comments
 router.get('/', async (req, res) => {
@@ -17,7 +34,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const comment = await Comment.findByPk(req.params.id, {
-    //   include: [{ model: City }],
+      include: [{ model: Post }, { model: User }],
     });
 
     if (!comment) {
@@ -28,18 +45,6 @@ router.get('/:id', async (req, res) => {
     res.status(200).json(comment);
   } catch (err) {
     res.status(500).json({ message: 'Failed to retrieve comment', error: err });
-  }
-});
-
-// CREATE a new comment
-router.post('/', async (req, res) => {
-  try {
-    const newComment = await Comment.create({
-      comment_id: req.body.comment_id,
-    });
-    res.status(200).json(newComment);
-  } catch (err) {
-    res.status(400).json(err);
   }
 });
 

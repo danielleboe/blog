@@ -1,264 +1,62 @@
-    
-           <!-- Log in modal start -->
-            <div id="login-modal" class="modal">
-              <form
-                class="modal-content animate"
-                action="/action_page.php"
-                method="post"
-              >
-                <div class="imgcontainer">
-                  <span
-                    onclick="document.getElementById('login-modal').style.display='none'"
-                    class="close"
-                    title="Close Modal"
-                    >&times;</span
-                  >
-                </div>
-                <div class="modal-container">
-                  <span class="modal-headline"><h1>Sign In</h1></span>
-                  <button type="button" class="login-with-google-btn modal-button">
-                    Sign in with Google
-                  </button>
-
-                  <label for="email"><b>Email</b></label>
-                    <input type="email" class="modal-input" placeholder="Enter Email" name="email" id="email" autocomplete="email" required />
-                  <label for="psw"><b>Password</b></label>
-                  <input
-                    type="password"
-                    id="psw"
-                    name="psw"
-                    class="modal-input"
-                    placeholder="Enter Password"
-                    autocomplete="current-password"
-                    required
-                  />
-                  <button type="submit" class="modal-button">Log In</button>
-                  <div class="text-inline">
-                    <label for="remember" class="remember">
-                      <input
-                        type="checkbox"
-                        checked="checked"
-                        id="remember"
-                        name="remember"
-                      />
-                      &nbsp;Remember me
-                    </label>
-                    <span class="psw forgotPassword">
-                      <a href="/password-reset" class="forgotPassword" id="psw">Forgot password?</a>
-                    </span>
-                  </div>
-                </div>
-           
-        <div class="nav-element nav-button">
-        <button onclick="document.getElementById('login-modal').style.display='block'" class="login-button">
-            LOG IN
-        </button>
+<!-- Log in modal start -->
+<div id="login-modal" class="modal">
+  <form class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('login-modal').style.display='none'" class="close"
+        title="Close Modal">&times;</span>
     </div>
-              </form>
-            </div>
-            <!-- login in modal end -->
+    <div class="modal-container" id="login-form">
+      <span class="modal-headline">
+        <h1>Sign In</h1>
+      </span>
+      <label for="email"><b>Email</b></label>
+      <input type="email" class="modal-input" placeholder="Enter Email" name="email" id="email" autocomplete="email"
+        required />
+      <label for="password"><b>Password</b></label>
+      <input type="password" id="password" name="password" class="modal-input" placeholder="Enter Password"
+        autocomplete="current-password" required />
+      <button type="submit" class="modal-button">Login</button>
+    </div>
 
-            <!-- create account Modal Start -->
+    <div class="nav-element nav-button">
+      <button onclick="document.getElementById('signup-modal').style.display='block'" class="signup-button">
+        Sign Up
+      </button>
+    </div>
+  </form>
+</div>
+<!-- login in modal end -->
+
+<!-- create account Modal Start -->
 
 <div id="signup-modal" class="modal">
-<form
-  class="modal-content animate"
-  action="/action_page.php"
-  method="post"
->
-  <div class="imgcontainer">
-    <span
-      onclick="document.getElementById('signup-modal').style.display='none'"
-      class="close"
-      title="Close Modal"
-      >&times;</span
-    >
-  </div>
-
-  <div class="modal-container">
-    <span class="modal-headline"><h1>Sign Up</h1></span>
-    <button type="button" class="login-with-google-btn modal-button">
-      Sign in with Google
-    </button>
-    <label for="uname"><b>Username</b></label>
-    <input
-      type="text"
-      class="modal-input"
-      placeholder="Enter Username"
-      name="uname"
-      id="uname"
-      autocomplete="username"
-      required
-    />
-    <label for="email"><b>Email</b></label>
-    <input
-      type="email"
-      class="modal-input"
-      dplaceholder="Enter Email"
-      name="email"
-      id="email"
-      autocomplete="email"
-      required
-    />
-    <label for="psw"><b>Password</b></label>
-    <input
-      type="password"
-      class="modal-input"
-      placeholder="Enter Password"
-      name="psw"
-      id="psw"
-      required
-    />
-    <button type="submit" class="modal-button">Sign Up</button>
-    <div class="text-inline">
-      <label for="remember" class="remember">
-        <input
-          type="checkbox"
-          checked="checked"
-          id="remember"
-          name="remember"
-        />
-        &nbsp;Remember me
-      </label>
+  <form class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('signup-modal').style.display='none'" class="close"
+        title="Close Modal">&times;</span>
     </div>
-  </div>
-  <div class="modal-container">
-    <button type="button" class="signup modal-button">Log In</button>
-  </div>
-</form>
-</div>
-<!-- create account modal end -->
-    
-   
-   
-   
-    <!-- mobile Log in modal start -->
-        <div id="mLogin-modal" class="modal">
-          <form
-            class="modal-content animate"
-            action="/action_page.php"
-            method="post"
-          >
-            <div class="imgcontainer">
-              <span
-                onclick="document.getElementById('mLogin-modal').style.display='none'"
-                class="close"
-                title="Close Modal"
-                >&times;</span
-              >
-            </div>
-            <div class="modal-container">
-              <span class="modal-headline"><h1>Sign In</h1></span>
-              <button type="button" class="login-with-google-btn modal-button">
-                Sign in with Google
-              </button>
-             <label for="email"><b>Email</b></label>
-                    <input type="email" class="modal-input" placeholder="Enter Email" name="email" id="email" autocomplete="email" required />
-              <label for="psw"><b>Password</b></label>
-              <input
-                type="password"
-                id="psw"
-                name="psw"
-                class="modal-input"
-                placeholder="Enter Password"
-                autocomplete="current-password"
-                required
-              />
-              <button type="submit" class="modal-button">Log In</button>
-              <div class="text-inline">
-                <label for="remember" class="remember">
-                  <input
-                    type="checkbox"
-                    checked="checked"
-                    id="remember"
-                    name="remember"
-                  />
-                  &nbsp;Remember me
-                </label>
-                <span class="psw forgotPassword">
-                  <a href="/password-reset" class="forgotPassword" id="psw">Forgot password?</a>
-                </span>
-              </div>
-            </div>
-    
-            <div class="modal-container">
-              <button type="button" class="signup modal-button">Sign Up</button>
-            </div>
-          </form>
-        </div>
-        <!-- mobile login in modal end --> 
 
-        <!-- mobile create account Modal Start -->
+    <div class="modal-container" id="signup-form">
+      <span class="modal-headline">
+        <h1>Sign Up</h1>
+      </span>
+      <label for=""><b>Username</b></label>
+      <input type="text" class="modal-input" placeholder="Enter Username" name="username" id="username"
+        autocomplete="username" required />
+      <label for="email"><b>Email</b></label>
+      <input type="email" class="modal-input" dplaceholder="Enter Email" name="email" id="email" autocomplete="email"
+        required />
+      <label for="password"><b>Password</b></label>
+      <input type="password" class="modal-input" placeholder="Enter Password" name="password" id="password" required />
+      <button type="submit" class="modal-button">Sign Up</button>
 
-<div id="mSignup-modal" class="modal">
-<form
-  class="modal-content animate"
-  action="/action_page.php"
-  method="post"
->
-  <div class="imgcontainer">
-    <span
-      onclick="document.getElementById('mSignup-modal').style.display='none'"
-      class="close"
-      title="Close Modal"
-      >&times;</span
-    >
-  </div>
-
-  <div class="modal-container">
-    <span class="modal-headline"><h1>Sign Up</h1></span>
-    <button type="button" class="login-with-google-btn modal-button">
-      Sign in with Google
-    </button>
-    <label for="uname"><b>Username</b></label>
-    <input
-      type="text"
-      class="modal-input"
-      placeholder="Enter Username"
-      name="uname"
-      id="uname"
-      autocomplete="username"
-      required
-    />
-    <label for="email"><b>Email</b></label>
-    <input
-      type="email"
-      class="modal-input"
-      dplaceholder="Enter Email"
-      name="email"
-      id="email"
-      autocomplete="email"
-      required
-    />
-    <label for="psw"><b>Password</b></label>
-    <input
-      type="password"
-      class="modal-input"
-      placeholder="Enter Password"
-      name="psw"
-      id="psw"
-      required
-    />
-    <button type="submit" class="modal-button">Sign Up</button>
-    <div class="text-inline">
-      <label for="remember" class="remember">
-        <input
-          type="checkbox"
-          checked="checked"
-          id="remember"
-          name="remember"
-        />
-        &nbsp;Remember me
-      </label>
-      <!-- <span class="psw forgotPassword">
-        <a href="#" class="forgotPassword" id="psw">Forgot password?</a>
-      </span> -->
     </div>
-  </div>
 
-  <div class="modal-container">
-    <button type="button" class="signup modal-button">Log In</button>
-  </div>
-</form>
+     <div class="nav-element nav-button">
+      <button onclick="document.getElementById('login-modal').style.display='block'" class="login-button">
+       Log In
+      </button>
+    </div>
+  </form>
 </div>
 <!-- create account modal end -->

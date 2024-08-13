@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, Comment, User } = require('../../models');
 
 // GET all posts
 router.get('/', async (req, res) => {
@@ -16,18 +16,22 @@ router.get('/', async (req, res) => {
 // GET a single post
 router.get('/:id', async (req, res) => {
   try {
-    const post = await Post.findByPk(req.params.id, {
-    //   include: [{ model: City }],
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comment,
+          include: [User],
+        },
+        {
+          model: User,
+        },
+      ],
     });
 
-    if (!post) {
-      res.status(404).json({ message: 'No post found with this id!' });
-      return;
-    }
-
-    res.status(200).json(post);
+    const post = postData.get({ plain: true });
+    res.render('single-post', { post, loggedIn: req.session.loggedIn });
   } catch (err) {
-    res.status(500).json({ message: 'Failed to retrieve post', error: err });
+    res.status(500).json(err);
   }
 });
 
@@ -35,11 +39,14 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const newPost = await Post.create({
-      post_id: req.body.post_id,
+      user_id: req.body.user_id,
+      post_title: req.body.post_title,
+      post_txt: req.body.post_txt,
     });
-    res.status(200).json(newPost);
+
+    res.redirect('/');
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 

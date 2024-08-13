@@ -7,8 +7,8 @@ const commentData = [
       "comment_txt": "The crazy amount of MLMs in the salt lake valley"
     },
     {
-      "user_id": 2,
-      "post_id": 2,
+      "user_id": 1,
+      "post_id": 1,
       "comment_txt": "The inversion in December- January and the forest fire smoke july-september is horrendous.",
      }
 

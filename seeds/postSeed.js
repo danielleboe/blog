@@ -1,10 +1,10 @@
-const { Comment } = require("../models");
+const { Post } = require("../models");
 
-const commentData = [
+const postData = [
     {
       "user_id": 1,
       "post_title":"test title",
-      "post_txt": "test contentt",
+      "post_txt": "test content",
     }
 
 ];
@@ -17,5 +17,5 @@ const preprocessData = (data) => {
   });
 };
 
-const seedComment = () => Comment.bulkCreate(preprocessData(commentData));
+const seedComment = () => Post.bulkCreate(preprocessData(postData));
 module.exports = seedComment;

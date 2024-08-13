@@ -1,0 +1,21 @@
+{{!-- <!-- views/single-post.handlebars -->
+<h1>{{post.title}}</h1>
+<p>{{post.content}}</p>
+<p>Posted by {{post.user.username}}</p>
+
+<h2>Comments</h2>
+{{#each post.comments}}
+  <p><strong>{{this.user.username}}:</strong> {{this.comment_text}}</p>
+{{/each}}
+
+{{#if loggedIn}}
+  <form id="comment-form">
+    <textarea name="comment_text" id="comment-text" rows="3"></textarea>
+    <button type="submit">Add Comment</button>
+  </form>
+{{else}}
+  <p><a href="/login">Log in</a> to comment.</p>
+{{/if}}
+
+
+ <script src="./js/post.js"></script> --}}
