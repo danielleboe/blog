@@ -6,6 +6,9 @@ const sequelize = require('./config/connection');
 const routes = require('./controllers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const postRoutes = require('./controllers/api/postRoutes');
+const flash = require('connect-flash');
+const passport = require('passport');
+// const { sequelize, User } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -14,7 +17,7 @@ const sess = {
   secret: 'Super secret secret',
   cookie: {},
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: new SequelizeStore({
     db: sequelize,
   }),
@@ -35,6 +38,25 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//////
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});
+
+require('./config/passport')(passport);
+
+app.use('/', require('./controllers/index'));
+app.use('/users', require('./controllers/api/users'));
+//////
 app.use(routes);
 // Use the post routes
 app.use('/posts', postRoutes);
