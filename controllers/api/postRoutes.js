@@ -36,19 +36,30 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE a new post
+// router.post('/', async (req, res) => {
+//   try {
+//     const newPost = await Post.create({
+//       user_id: req.body.user_id,
+//       post_title: req.body.post_title,
+//       post_txt: req.body.post_txt,
+//     });
+//     res.json(newCategory);
+
+//     // res.redirect('/');
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.post('/', async (req, res) => {
   try {
-    const newPost = await Post.create({
-      user_id: req.body.user_id,
-      post_title: req.body.post_title,
-      post_txt: req.body.post_txt,
-    });
-
-    res.redirect('/');
+    const newPost = await Post.create(req.body);
+    res.json(newPost);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 //PUT - Update an exisiting post by ID
 router.put('/:id', async (req, res) => {

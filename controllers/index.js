@@ -7,11 +7,6 @@ const dayjs = require('dayjs');
 router.use("/api", apiRoutes);
 router.use(bodyParser.json());
 
-// router.get("/", (req, res) => {
-//   console.log(`1@@@@@@@@@@home`);
-//   res.render('home', { title: 'Home' });
-// });
-
 router.get("/dashboard", (req, res) => {
   console.log(`1@@@@@@@@@@dashboard`);
   res.render('dashboard', { title: 'Dashboard' });
@@ -27,6 +22,7 @@ router.get("/blog-post", (req, res) => {
   res.render('blogPost', { title: 'Blog Post' });
 });
 
+//render the blog posts on homepage
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -48,7 +44,6 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 
 module.exports = router;
