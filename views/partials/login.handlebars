@@ -1,16 +1,16 @@
 <!-- Log in modal start -->
 <div id="login-modal" class="modal">
-  <form class="modal-content animate">
+  <form class="modal-content animate" id="login-form">
     <div class="imgcontainer">
       <span onclick="document.getElementById('login-modal').style.display='none'" class="close"
         title="Close Modal">&times;</span>
     </div>
-    <div class="modal-container" id="login-form">
+    <div class="modal-container">
       <span class="modal-headline">
         <h1>Sign In</h1>
       </span>
-      <label for="email"><b>Email</b></label>
-      <input type="email" class="modal-input" placeholder="Enter Email" name="email" id="email" autocomplete="email"
+      <label for="username"><b>Username</b></label>
+      <input type="username" class="modal-input" placeholder="Enter Username" name="username" id="username" autocomplete="username"
         required />
       <label for="password"><b>Password</b></label>
       <input type="password" id="password" name="password" class="modal-input" placeholder="Enter Password"
@@ -19,11 +19,11 @@
     </div>
 
 
-    <div class="nav-element nav-button">
+    {{!-- <div class="nav-element nav-button">
       <button onclick="document.getElementById('signup-modal').style.display='block'" class="signup-button">
         Sign Up
       </button>
-    </div>
+    </div> --}}
   </form>
 </div>
 <!-- login in modal end -->
@@ -31,13 +31,13 @@
 <!-- create account Modal Start -->
 
 <div id="signup-modal" class="modal">
-  <form class="modal-content animate">
+  <form class="modal-content animate" id="signup-form">
     <div class="imgcontainer">
       <span onclick="document.getElementById('signup-modal').style.display='none'" class="close"
         title="Close Modal">&times;</span>
     </div>
 
-    <div class="modal-container" id="signup-form">
+    <div class="modal-container">
       <span class="modal-headline">
         <h1>Sign Up</h1>
       </span>
@@ -53,11 +53,11 @@
 
     </div>
 
-     <div class="nav-element nav-button">
+     {{!-- <div class="nav-element nav-button">
       <button onclick="document.getElementById('login-modal').style.display='block'" class="login-button">
        Log In
       </button>
-    </div>
+    </div> --}}
   </form>
 </div>
 <!-- create account modal end -->

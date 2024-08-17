@@ -1,21 +1,26 @@
 <!-- views/single-post.handlebars -->
-<h1>{{post.title}}</h1>
-<p>{{post.content}}</p>
+<h1>{{post.post_title}}</h1>
+<p>{{post.post_txt}}</p>
 <p>Posted by {{post.user.username}}</p>
 
 <h2>Comments</h2>
 {{#each post.comments}}
-  <p><strong>{{this.user.username}}:</strong> {{this.comment_text}}</p>
+  <p><strong>{{this.user.username}}:</strong> {{this.comment_txt}}</p>
 {{/each}}
 
-{{#if loggedIn}}
+{{#if logged_in}}
   <form id="comment-form">
+    <input type="hidden" value="{{post.id}}" id="post_id"/>
     <textarea name="comment_text" id="comment-text" rows="3"></textarea>
     <button type="submit">Add Comment</button>
   </form>
 {{else}}
-  <p><a href="/login">Log in</a> to comment.</p>
+ <div class="login-button-div">
+        <button onclick="document.getElementById('login-modal').style.display='block'" class="login-button">
+            LOG IN TO COMMENT
+        </button>
+    </div>
 {{/if}}
 
 
- <script src="./js/post.js"></script>
+ <script src="/js/post.js" type="text/javascript"></script>

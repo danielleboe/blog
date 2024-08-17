@@ -67,67 +67,93 @@
 // module.exports = router;
 
 
+
+
+
+
 // routes/users.js
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const passport = require('passport');
 const { User } = require('../../models');
 
+// GET all users
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.findAll({
+    //   include: [],
+    });
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to retrieve users', error: err });
+  }
+});
+
+
+
+
 // Register Page
-router.get('/register', (req, res) => res.render('register'));
+router.get('/signup', (req, res) => res.render('login'));
 
 // Register Handle
-router.post('/register', async (req, res) => {
-  const { username, password, password2 } = req.body;
+router.post('/signup', async (req, res) => {
+  const { username, email, password } = req.body;
+  console.log(`!!!!!!!!`, username, email, password);
   let errors = [];
-
-  if (password !== password2) {
-    errors.push({ msg: 'Passwords do not match' });
-  }
 
   if (password.length < 6) {
     errors.push({ msg: 'Password should be at least 6 characters' });
   }
 
   if (errors.length > 0) {
-    res.render('register', { errors, username, password, password2 });
+    res.render('login', { errors, username, email, password });
+    console.log(`$$$$$$$$!`, username, password);
   } else {
     try {
       const user = await User.findOne({ where: { username } });
+      console.log(`!^^^^^^^^!`, username, email, password);
       if (user) {
+        console.log(`!^%%%%%%%%%%%%%^!`, username, email, password);
         errors.push({ msg: 'Username already exists' });
-        res.render('register', { errors, username, password, password2 });
+        res.render('signup', { errors, username, email, password });
       } else {
-        await User.create({ username, password });
-        req.flash('success_msg', 'You are now registered and can log in');
-        res.redirect('/users/login');
+        console.log(`!^&&&&&&&&&&&&&&!`, username, email, password);
+        await User.create({ username, email, password });
+        req.flash('success_msg', 'You are now signuped and can log in');
+        res.redirect('/api/users/login');
       }
     } catch (err) {
       console.error(err);
-      res.render('register', { errors, username, password, password2 });
+      res.render('signup', { errors, username, email, password });
     }
   }
 });
 
 // Login Page
-router.get('/login', (req, res) => res.render('login'));
+router.get('/login', (req, res) => res.render('home'));
 
 // Login Handle
 router.post('/login', (req, res, next) => {
+  const { username, password } = req.body;
+  console.log(`!++++++++!`, username, password);
   passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
+    successRedirect: '/',
+    failureRedirect: '/api/users/login',
     failureFlash: true
   })(req, res, next);
+  // return res.status(200);
 });
 
 // Logout Handle
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   req.logout(() => {
     req.flash('success_msg', 'You are logged out');
-    res.redirect('/users/login');
+    res.redirect('/api/users/login');
   });
 });
+
+
+
 
 module.exports = router;

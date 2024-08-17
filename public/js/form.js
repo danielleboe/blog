@@ -1,64 +1,75 @@
 // const usernameInput = document.querySelector("#username");
-// const titleInput = document.querySelector("#blogtitle");
-// const contentInput = document.querySelector("#blogcontent");
-// const submit = document.querySelector("#submit");
-// const msgDiv = document.querySelector("#msg");
+const titleInput = document.querySelector("#blogtitle");
+const contentInput = document.querySelector("#blogcontent");
+const submit = document.querySelector("#submit");
+const msgDiv = document.querySelector("#msg");
 
-// function displayMessage(type, message) {
-//   msgDiv.textContent = message;
-//   msgDiv.setAttribute("class", type);
-// }
+function displayMessage(type, message) {
+  msgDiv.textContent = message;
+  msgDiv.setAttribute("class", type);
+}
 
-// submit.addEventListener("click", function (event) {
-//   event.preventDefault();
+submit.addEventListener("click", async function (event) {
+  event.preventDefault();
+  console.log(`click11111111111111bsubmit`);
+
 
 //   const username = usernameInput.value;
-//   const blogtitle = titleInput.value;
-//   const blogcontent = contentInput.value;
-//   const blogForm = document.getElementById("blogForm");
-//   let isError = false;
+  const blogTitle = titleInput.value;
+  const blogContent = contentInput.value;
+  const blogForm = document.getElementById("blogForm");
+  let isError = false;
 
 //   if (username.trim() === "" || !username) {
 //     console.log("username+++++", username);
 //     displayMessage("error", "Username cannot be blank");
 //     isError = true;
-//   } else if (blogtitle.trim() === "" || !blogtitle) {
-//     displayMessage("error", "Title cannot be blank");
-//     isError = true;
-//   } else if (blogcontent.trim() === "" || !blogcontent) {
-//     displayMessage("error", "Content cannot be blank");
-//     isError = true;
-//   } else {
-//     displayMessage("success", "Submitted successfully");
-//   }
+   if (blogTitle.trim() === "" || !blogTitle) {
+    displayMessage("error", "Title cannot be blank");
+    isError = true;
+  } else if (blogContent.trim() === "" || !blogContent) {
+    displayMessage("error", "Content cannot be blank");
+    isError = true;
+  } else {
+    displayMessage("success", "Submitted successfully");
+  }
 
-//   // if there is not an error then create the array
+  // if there is not an error then create the array
+  // add dttm field
+  if (!isError) {
 
-//   // add dttm field
-//   if (!isError) {
-//     // declare variable for the json object for indiviual post
-//     const singlePost = {
-//       username: username,
-//       blogtitle: blogtitle,
-//       blogcontent: blogcontent,
-//       dttm: new Date(),
-//     };
+    // declare variable for the json object for indiviual post
+    const singlePost = {
+    //   username: username.value,
+      blogTitle: blogTitle,
+      blogContent: blogContent,
+      dttm: new Date(),
+    };
+console.log(`singlepostaaaaaaaaaaaaa`, singlePost);
 
-//     // declare variable for parent
-//     // add to single post to existing json array
-//     let parentPost = [];
-//     const existingPosts = JSON.parse(localStorage.getItem("parentPost"));
+const response = await fetch('/api/posts', {
+    method: 'POST',
+    body: JSON.stringify(singlePost),
+    headers: { 'Content-Type': 'application/json' },
+  });
 
-//     //if parentpost exists then add to existing last post
-//     if (existingPosts !== null) {
-//       parentPost = existingPosts;
-//     }
 
-//     parentPost.push(singlePost);
 
-//     //localStorage set item json.stringify()
-//     localStorage.setItem("parentPost", JSON.stringify(parentPost));
-//     blogForm.reset();
-//     window.location.href = "blog.html";
-//   }
-// });
+    // declare variable for parent
+    // add to single post to existing json array
+    // let parentPost = [];
+    // const existingPosts = JSON.parse(localStorage.getItem("parentPost"));
+
+    // //if parentpost exists then add to existing last post
+    // if (existingPosts !== null) {
+    //   parentPost = existingPosts;
+    // }
+
+    // parentPost.push(singlePost);
+
+    // //localStorage set item json.stringify()
+    // localStorage.setItem("parentPost", JSON.stringify(parentPost));
+    blogForm.reset();
+    // window.location.href = "blog.html";
+  }
+});

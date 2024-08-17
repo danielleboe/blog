@@ -2,10 +2,10 @@ document.getElementById('comment-form').addEventListener('submit', async functio
     event.preventDefault();
 
     const comment_text = document.getElementById('comment-text').value.trim();
-    const post_id = '{{post.id}}';
+    const post_id = document.getElementById('post_id').value.trim();
 
     if (comment_text) {
-      const response = await fetch('/comments', {
+      const response = await fetch('/api/comments', {
         method: 'POST',
         body: JSON.stringify({
           comment_text,

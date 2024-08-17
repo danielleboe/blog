@@ -1,7 +1,12 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../../models');
+const { isLoggedIn } = require("../../utils/auth");
 
-// GET all posts
+// const express = require('express');
+// const router = express.Router();
+// const Post = require('../../models/Post');
+
+// // GET all posts
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.findAll({
@@ -29,7 +34,7 @@ router.get('/:id', async (req, res) => {
     });
 
     const post = postData.get({ plain: true });
-    res.render('single-post', { post, loggedIn: req.session.loggedIn });
+    res.render('blogPost', { post, logged_in: isLoggedIn(req) });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -51,14 +56,28 @@ router.get('/:id', async (req, res) => {
 //   }
 // });
 
+
+// Route to handle the form submission
 router.post('/', async (req, res) => {
   try {
-    const newPost = await Post.create(req.body);
-    res.json(newPost);
+    const { username, blogTitle, blogContent } = req.body;
+    console.log(`blogcontent@@@@@`,blogContent, blogTitle);
+
+    const newPost = await Post.create({
+      user_id: req.user.id,
+      post_title: blogTitle,
+      post_txt: blogContent,
+    });
+
+    res.redirect(`/posts/${newPost.id}`);
   } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 });
+
+
+
 
 
 //PUT - Update an exisiting post by ID
@@ -81,7 +100,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE a post
+// // DELETE a post
 router.delete('/:id', async (req, res) => {
   try {
     const postData = await Post.destroy({
@@ -100,5 +119,14 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// module.exports = router;
+
+// Route to display the form to create a new post
+router.get('/blogForm', (req, res) => {
+  res.render('blogForm');
+});
+
+
 
 module.exports = router;

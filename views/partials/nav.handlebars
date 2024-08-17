@@ -8,11 +8,11 @@
         <a href="/" class="home-link">HOME</a>
     </div>
 
+ {{#if logged_in}}
     <div class="nav-element sement-links">
         <a href="/dashboard" class="dashboard-link">DASHBOARD</a>
     </div>
 
-    {{#if logged_in}}
     <div class="nav-element nav-button">
         <form id="logout-form">
             <button type="submit" class="logout-button">
@@ -27,6 +27,11 @@
             LOG IN
         </button>
     </div>
+    <div class="nav-element nav-button">
+      <button onclick="document.getElementById('signup-modal').style.display='block'" class="signup-button">
+        SIGN UP
+      </button>
+    </div> 
     <!-- sign up button -->
 
     {{/if}}

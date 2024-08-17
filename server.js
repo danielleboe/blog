@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 // const { sequelize, User } = require('./models');
 
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -54,8 +55,8 @@ app.use((req, res, next) => {
 
 require('./config/passport')(passport);
 
-app.use('/', require('./controllers/index'));
-app.use('/users', require('./controllers/api/users'));
+app.use('/', require('./controllers/index.js'));
+app.use('/users', require('./controllers/api/index'));
 //////
 app.use(routes);
 // Use the post routes
