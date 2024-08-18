@@ -33,8 +33,11 @@
     "morgan": "~1.10.0",
     "node-fetch": "^3.3.2",
     "nodemon": "^3.1.4",
+<<<<<<< HEAD
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
+=======
+>>>>>>> 701c73d (routes updates)
     "pg": "^8.12.0",
     "pg-hstore": "^2.3.4",
     "postgres": "^3.4.4",

@@ -106,9 +106,50 @@ router.post('/signup', async (req, res) => {
     errors.push({ msg: 'Password should be at least 6 characters' });
   }
 
+<<<<<<< HEAD
   if (errors.length > 0) {
     res.render('login', { errors, username, email, password });
     console.log(`$$$$$$$$!`, username, password);
+=======
+// Login
+router.post('/login', async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { email: req.body.email } });
+    console.log(`11111111userdatafindone`)
+
+    if (!userData) {
+      res.status(400).json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+    
+
+    const validPassword = userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+    console.log(`valid password check`)
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Logout
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+>>>>>>> 701c73d (routes updates)
   } else {
     try {
       const user = await User.findOne({ where: { username } });

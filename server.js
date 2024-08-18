@@ -6,10 +6,13 @@ const sequelize = require('./config/connection');
 const routes = require('./controllers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const postRoutes = require('./controllers/api/postRoutes');
+<<<<<<< HEAD
 const flash = require('connect-flash');
 const passport = require('passport');
 // const { sequelize, User } = require('./models');
 
+=======
+>>>>>>> 701c73d (routes updates)
 
 const app = express();
 const PORT = process.env.PORT || 3001;
