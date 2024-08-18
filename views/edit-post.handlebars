@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/css/form.css">
+
+<section class="shell"> <!-- Body Shell -->
+    <section class="content">
+        <div class="carafe">
+
+            {{!-- /////// --}}
+            <main class="header"> <!-- Form Header -->
+                <h1>Edit Post</h1>
+            </main>
+            <form action="/api/posts/{{post.id}}" method="POST" id="blogForm">
+                <input type="hidden" name="_method" value="PUT">
+
+                <div class="input-data">
+                    <!-- Title Field -->
+                    <label for="blogTitle" class="formlabel">Title:</label>
+                    <input type="text" id="blogTitle" name="blogTitle" value="{{post.post_title}}" required>
+                </div>
+                <div class="input-data">
+
+                    <!-- Content Field -->
+                    <label for="blogContent" class="formlabel">Content:</label>
+                    <textarea id="blogContent" name="blogContent" rows="10" required>{{post.post_txt}}</textarea>
+                </div>
+                <div id="msg"></div>
+                <br>
+                <!-- Submit Button -->
+                <button type="submit">Save Changes</button>
+            </form>
+            <!-- In your views/post-detail.handlebars or similar -->
+            <form action="/api/posts/{{post.id}}" method="POST"
+                onsubmit="return confirm('Are you sure you want to delete this post?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete Post</button>
+            </form>
+
+        </div>
+    </section>
+</section>

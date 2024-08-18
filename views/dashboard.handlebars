@@ -1,14 +1,21 @@
-<section class="dashboard-section">
-    <div class="flex-grid row">
-        <div class="col">
+ <link rel="stylesheet" href="/css/form.css">
+
+<section class="dashboard-section">  
+
+    <div class="new-post-container"> 
             <div id="'newpost-button">
                 <a href="/blog-form" class="button" id="submit">Create New Post
                 </a>
             </div>
 
-            {{#each posts}}
-  {{> post}}
-{{/each}}
+</div>
+  <div class="posts-container">
+
+    {{#each posts}}
+    <div class="post-container">
+      {{> dashboardPost}}
+    </div>
+    {{/each}}
+
+  </div>
 </section>
-</div>
-</div>

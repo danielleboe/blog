@@ -2,9 +2,6 @@ const router = require('express').Router();
 const { Post, Comment, User } = require('../../models');
 const { isLoggedIn } = require("../../utils/auth");
 
-// const express = require('express');
-// const router = express.Router();
-// const Post = require('../../models/Post');
 
 // // GET all posts
 router.get('/', async (req, res) => {
@@ -41,27 +38,11 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE a new post
-// router.post('/', async (req, res) => {
-//   try {
-//     const newPost = await Post.create({
-//       user_id: req.body.user_id,
-//       post_title: req.body.post_title,
-//       post_txt: req.body.post_txt,
-//     });
-//     res.json(newCategory);
-
-//     // res.redirect('/');
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-
 // Route to handle the form submission
 router.post('/', async (req, res) => {
   try {
     const { username, blogTitle, blogContent } = req.body;
-    console.log(`blogcontent@@@@@`,blogContent, blogTitle);
+    // console.log(`blogcontent@@@@@`,blogContent, blogTitle);
 
     const newPost = await Post.create({
       user_id: req.user.id,
@@ -76,29 +57,87 @@ router.post('/', async (req, res) => {
   }
 });
 
+// PUT
+router.put('/:id', async (req, res) => {
+  const postId = req.params.id;
+  const { blogTitle, blogContent } = req.body;
 
-
+  try {
+      const updatePost = await Post.findByPk(postId);
+      if (updatePost) {
+        post.post_title  = blogTitle,
+        post.post_txt = blogContent,
+      
+          await post.save();
+          res.redirect(`/posts/${updatePost.id}`);
+      } else {
+          res.status(404).send('Post not found');
+      }
+  } catch (error) {
+      res.status(500).send('Server error');
+  }
+});
 
 
 //PUT - Update an exisiting post by ID
-router.put('/:id', async (req, res) => {
-  try {
-    const [updated] = await Post.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
+// router.put('/:id', async (req, res) => {
+//   try {
+//     const [updated] = await Post.update(req.body, {
+//       where: {
+//         id: req.params.id,
+//       },
+//     });
 
-    if (updated) {
-      const updatedPost = await Post.findByPk(req.params.id);
-      res.json(updatedPost);
-    } else {
-      res.status(404).json({ message: 'No post found with this id!' });
-    }
-  } catch (err) {
-    res.status(400).json(err);
+//     if (updated) {
+//       const updatedPost = await Post.findByPk(req.params.id);
+//       res.json(updatedPost);
+//     } else {
+//       res.status(404).json({ message: 'No post found with this id!' });
+//     }
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
+
+////edit post
+router.get('/:id/edit', async (req, res) => {
+  const postId = req.params.id;
+  try {
+      const editPost = await Post.findByPk(postId);
+      if (editPost) {
+          res.render('edit-post', { post: editPost.get({ plain: true }) }); // Pass plain object
+      } else {
+          res.status(404).send('Post not found');
+      }
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Server error');
   }
 });
+
+
+// router.get('/:id/edit', async (req, res) => {
+//   const postId = req.params.id;
+//   try {
+//       const post = await Post.findByPk(postId);
+//       if (post) {
+//           res.render('edit-post', { post }); // Render the edit-post handlebars template
+//       } else {
+//           res.status(404).send('Post not found');
+//       }
+//   } catch (error) {
+//       res.status(500).send('Server error');
+//   }
+// });
+
+///
+
+
+
+
+
+
 
 // // DELETE a post
 router.delete('/:id', async (req, res) => {

@@ -4,9 +4,14 @@ const bodyParser = require("body-parser");
 const { Post } = require("../models");
 const dayjs = require("dayjs");
 const { ensureAuthenticated, isLoggedIn } = require("../utils/auth");
+const methodOverride = require('method-override');
+
+
+
 
 router.use("/api", apiRoutes);
 router.use(bodyParser.json());
+router.use(methodOverride('_method'));
 
 // router.get("/dashboard", (req, res) => {
 //   console.log(`1@@@@@@@@@@dashboard`);

@@ -1,28 +1,22 @@
-   
-              <section class="content">
-        <main class="header">
-          <!-- Blog Headline Section -->
-          <div class="headline">
-            <h1>Danielle Boenisch Blog</h1>
-          </div>
-        </main>
+{{!--
+<link rel="stylesheet" href="/css/blog.css"> --}}
 
-{{!-- Extend the main layout --}}
-{{!-- {{#extend 'layouts/main'}}
+<section class="home-content">
+  <main class="header">
+    <!-- Blog Headline Section -->
+    <div class="headline">
+      <h1>THE TECH BLOG</h1>
+    </div>
+  </main>
 
-{{#content 'body'}} --}}
-<h1>All Blog Posts</h1>
+  <div class="c">
 
-{{#each posts}}
-  {{> post}}
-{{/each}}
+    {{#each posts}}
+    <div class="post-container">
+      {{> post}}
+    </div>
+    {{/each}}
 
-{{!-- {{/content}} --}}
-
-{{!-- 
-        <div class="posts" id="posts"><!-- Posts Inserted Here --></div>
-        <!-- Footer includes portfolio link and copyright line -->
-      </section> --}}
-    <!-- javascript -->
-    {{!-- <script src="./js/blog.js"></script> --}}
-  
+  </div>
+  {{!--
+  <script src="./js/blog.js"></script> --}}

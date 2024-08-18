@@ -17,12 +17,8 @@ body {
 
 .container {
   display: flex;
-  /* flex-direction: column; */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   flex: 1;
-  /* This allows the container to grow and push the footer down */
-  /* padding-bottom: 20px;  */
-  /* Adjust this value to create space for the footer */
   margin: 0;
   width: auto;
 }
@@ -38,15 +34,13 @@ body {
 
 .header {
   text-align: center;
-  font-size: 250%;
+  font-size: 200%;
   font-weight: 200;
   font-family: "Poppins", Helvetica, Arial, sans-serif;
   -webkit-background-clip: text;
   background-clip: text;
   color: black;
   margin-top: 2%;
-  /* color: transparent; */
-  /* -webkit-text-fill-color: transparent; */
 }
 
 .carafe {
@@ -95,6 +89,7 @@ form {
   resize: vertical;
 }
 
+
 /* Error/success message */
 
 #msg {
@@ -118,6 +113,13 @@ form {
   color: #e6252c;
 }
 
+#submit-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* Submit Button */
 .button {
   background-color: #3dd1e7;
@@ -128,7 +130,7 @@ form {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.75rem;
-  padding: 0.75rem 1.65rem;
+  padding: 0.75rem 1rem;
   position: relative;
   text-align: center;
   text-decoration: none #000000 solid;
@@ -170,12 +172,7 @@ form {
   }
 }
 
-#submit-button {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+
 
 footer {
   margin-top: auto;

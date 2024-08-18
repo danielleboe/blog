@@ -1,202 +1,91 @@
-/* The switch - the box around the slider */
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+/* post partial */
+
+body {
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
+}
+
+.post{
+  text-align:left;
+  color:black;
+}
+
+a{
+  text-decoration:none;
+}
+
 .top-nav{
   display:block;
   align-items: center;
   margin: 10px;
 }
 
-.toggle {
-  float:right;
-  margin: 10px;
+.headline{
+text-align:center;
+font-size: 40px;
+margin:0;
+
 }
 
-.switch { /*aka slide part of the toggle */
-    position: relative;
-    display: inline-block;
-    width: 39px; /*slide length */
-    height: 22px; 
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-    
-  }
-  
-  .slider:before { /*circle*/
-    position: absolute;
-    content: "";
-    height: 15px; /*circle height*/
-    width: 15px;  /*circle width */
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #3DD1E7;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #3DD1E7;
-  }
-  
-  input:checked + .slider:before {  /*length circle moves*/
-    -webkit-transform: translateX(15px);
-    -ms-transform: translateX(15px);
-    transform: translateX(15px);
-  }
-  
-  /* Rounded slider */
-  .slider.round {
-    border-radius: 34px;
-  }
+.post-container{
+margin: 50px 50px;
 
-  .slider.round:before {
-    border-radius: 50%;
-  }
-
-/* Dark Mode */
-.dark {
-  background-color: black;
-  height: 100vh;
-  color: white;
 }
 
-/* Moon icon on the toggle */
-.dark .slider:before{
-  content:"☾";
+.content {
+  max-width: 100%;
+  padding: 10px;
+  margin: 0px;
+  flex: 1; /* This allows the container to grow and push the footer down */
+  padding-bottom: 50px; /* Adjust this value to create space for the footer */
+  flex-direction: row;
+}
+
+.content .header {
   text-align: center;
-  font-size: 10px;
-  margin:auto;
-  color:black;
+  font-size: 40px;
+  font-weight: 200;
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
+  height: auto;
 }
 
-.dark .content{
-  background-color: black;
-  color: white;
-}
 
-.dark .content a {
-  color: white;
-  background-color: black;
-}
-
-.dark .footer{
-  color: white; 
-}
-
-.dark .headline {
-  color: white;
- 
-}
-
-.dark .content a:hover {
-  background-color: #31363F;
-  color: white;
-}
-
-/* Light Mode */
-.light {
-  background-color: white;
-  color: black;
-}
-
-/* Sun icon on the toggle */
-.light .slider:before{
-  content:"𖤓";
+footer {
+  margin-top: auto; /* This pushes the footer to the bottom */
+  background: transparent;
   text-align: center;
-  font-size: 10px;
-  margin:auto;
-  color:black;
-}
-
-/* .light .field{
-  color:black;
-} */
-
-.light .content{
-  background-color: white;
-  color: black;
-}
-
-.light .content a {
-  color: black;
-}
-
-.light .content a:hover {
-  background-color: rgb(29, 128, 210);
-}
-
-.light .footer{
-  color: black;  
+  padding: 30px;
 }
 
 
-/*Back Button*/
-.back-container {
-  float:right;
-  margin: 10px;
+@media screen and (max-width: 800px) {
+  .left,
+  .main,
+  .right {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
 }
 
-/* CSS */
-#backbutton {
-  align-items: center;
-  appearance: none;
-  background-color: #ccc;
-  border: 1px solid #dbdbdb;
-  border-radius: .375em;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #363636;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  height: 22px;
-  justify-content: center;
-  line-height: 1.5;
-  padding: calc(.5em - 1px) 1em;
-  position: relative;
-  text-align: center;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
+
+
+/* Dashboard Style */
+.dashboard-section{
+  margin: 20px;
+
 }
 
-#backbutton:active {
-  border-color: #4a4a4a;
-  outline: 0;
+#newpost-button{
+  margin: 50px;
+}
+.new-post-container{
+  display:flex;
+  justify-content:end;
+
 }
 
-#backbutton:focus {
-  border-color: #485fc7;
-  outline: 0;
-}
+/* /Blog Post */
 
-#backbutton:hover {
-  border-color: #b5b5b5;
-}
 
-#backbutton:focus:not(:active) {
-  box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
+.p-container{
+  margin: 0 50px 50px 50px;
 }
